@@ -5,7 +5,7 @@ using Scriptables.Bullets;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public sealed class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
@@ -29,7 +29,7 @@ public sealed class Bullet : MonoBehaviour
     }
     
 
-    public void Explode()
+    public virtual void Explode()
     {
         
     }

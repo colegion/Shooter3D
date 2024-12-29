@@ -6,7 +6,7 @@ namespace Helpers
     public class Utilities : MonoBehaviour
     {
         public static int BaseHealth = 100;
-        public static readonly string BulletPath = "Prefabs/Bullet";
+        public static readonly string BulletPath = "Prefabs/Bullets/Bullet";
         public static readonly string WeaponConfigLabel = "WeaponConfigs";
 
         public static Dictionary<Direction, Vector3> DirectionVectors = new Dictionary<Direction, Vector3>()
