@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Helpers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InputController : MonoBehaviour
 {
-    private Camera _mainCamera;
-    private Player _player;
+    [SerializeField] private Player player;
     private Direction _currentDirection;
-
+    private Camera _mainCamera;
 
     private void Awake()
     {
@@ -46,14 +46,14 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _player.Shoot();
+            player.Shoot();
         }
 
         for (int i = 0; i < Enum.GetValues(typeof(WeaponType)).Length; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0 + i))
             {
-                _player.OnWeaponChanged((WeaponType)i);
+                player.OnWeaponChanged((WeaponType)i);
             }
         }
     }
@@ -63,11 +63,11 @@ public class InputController : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
         worldPosition.y = transform.position.y;
-        _player.UpdateRotation(worldPosition);
+        player.UpdateRotation(worldPosition);
     }
 
     private void TriggerDirectionUpdate()
     {
-        _player.MoveToDirection(_currentDirection);
+        player.MoveToDirection(_currentDirection);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scriptables.Bullets;
@@ -21,7 +22,13 @@ public sealed class Bullet : MonoBehaviour
         bulletMesh.mesh = _config.bulletMesh;
         bulletRenderer.material = _config.bulletMaterial;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Explode();
+    }
     
+
     public void Explode()
     {
         

@@ -24,7 +24,7 @@ namespace Helpers
             {
                 strategy = CreateStrategy(type);
             }
-
+            
             return strategy;
         }
 
@@ -38,6 +38,7 @@ namespace Helpers
             {
                 strategyInstance = (IShootingStrategy)Activator.CreateInstance(strategyType);
                 _strategyByWeaponType.Add(weaponType, strategyInstance);
+                Debug.Log("Added key and value: " + weaponType + " " + strategyInstance);
             }
             else
             {

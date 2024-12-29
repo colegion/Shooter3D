@@ -20,13 +20,14 @@ public class GameController : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = new GameObject("GameController").AddComponent<GameController>();
+                _instance = FindObjectOfType<GameController>();
             return _instance;
         }
     }
 
     private void Awake()
     {
+        _instance = this;
         _strategyPool = new StrategyPool();
         _strategyPool.PoolStrategies();
         LoadWeaponConfigs();
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log($"Loaded Weapon Config: {weaponConfig.name}, Damage: {weaponConfig.damage}");
             }
+            player.Initialize();
         }
         else
         {

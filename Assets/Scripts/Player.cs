@@ -27,10 +27,10 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        Initialize();
+        //Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         OnWeaponChanged(WeaponType.Pistol);
     }

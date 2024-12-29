@@ -16,7 +16,25 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d1cbe81af9a572743b9ff16a869e91a9
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: e8e42611aab7aed45952cf584e546bde
+    m_Address: Assets/Scriptables/Weapons/Rifle.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - WeaponConfigs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0efa7c2a5872cae4e96b47d3f865ceca
+    m_Address: Assets/Scriptables/Weapons/Pistol.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - WeaponConfigs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc212386a0e7fca499884afdc4584263
+    m_Address: Assets/Scriptables/Weapons/Rocket Launcher.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - WeaponConfigs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b423df6cb0ba77f4f9544b5d202d6c29, type: 2}
   m_SchemaSet:
