@@ -1,3 +1,5 @@
+using Helpers;
+using Interfaces.WeaponStrategy;
 using UnityEngine;
 
 namespace Scriptables.Weapons
@@ -12,5 +14,6 @@ namespace Scriptables.Weapons
         public float areaOfEffect;
         public Mesh weaponMesh;
         public Material weaponMaterial;
+        public WeaponType weaponType;
     }
 }

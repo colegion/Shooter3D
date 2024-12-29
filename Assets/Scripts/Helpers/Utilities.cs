@@ -7,6 +7,13 @@ namespace Helpers
         
     }
 
+    public enum WeaponType
+    {
+        Pistol = 0,
+        Rifle,
+        RocketLauncher,
+    }
+
     public enum BulletType
     {
         Pistol = 0,
