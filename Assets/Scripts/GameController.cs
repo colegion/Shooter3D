@@ -60,9 +60,9 @@ public class GameController : MonoBehaviour
     
     private void OnDestroy()
     {
-        foreach (var weaponConfig in _weaponConfigs)
+        /*foreach (var weaponConfig in _weaponConfigs)
         {
             Addressables.Release(weaponConfig);
-        }
+        }*/
     }
 }

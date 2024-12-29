@@ -30,7 +30,7 @@ namespace Helpers
 
         private IShootingStrategy CreateStrategy(WeaponType weaponType)
         {
-            string strategyClassName = weaponType + "ShootingStrategy";
+            string strategyClassName = "Interfaces.WeaponStrategy." + weaponType + "ShootingStrategy";
             IShootingStrategy strategyInstance = null;
             Type strategyType = Type.GetType(strategyClassName);
 
