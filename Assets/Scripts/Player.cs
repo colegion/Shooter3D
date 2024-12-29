@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Helpers;
+using Interfaces;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
+    [SerializeField] private GameObject visuals;
     [SerializeField] private float moveSpeed;
     private Direction _currentDirection;
+    private float _health = Utilities.BaseHealth;
     private void OnEnable()
     {
         AddListeners();
@@ -35,6 +38,26 @@ public class Player : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
+    }
+    
+    public void TakeDamage(float amount)
+    {
+        _health -= amount;
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        visuals.SetActive(false);
+    }
+
+    public void ReSpawn()
+    {
+        _health = Utilities.BaseHealth;
+        visuals.SetActive(true);
     }
 
     private void AddListeners()
