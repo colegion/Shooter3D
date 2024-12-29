@@ -4,7 +4,7 @@ namespace Helpers
 {
     public class Utilities : MonoBehaviour
     {
-        
+        public static string BulletPath = "Prefabs/Bullet";
     }
 
     public enum WeaponType
