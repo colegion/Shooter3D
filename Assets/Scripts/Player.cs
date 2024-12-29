@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void UpdateRotation(Vector3 target)
     {
-        //transform.LookAt(target);
+        target.y = transform.position.y;
         Vector3 direction = target - transform.position;
         direction.y = 0;
         if (direction.sqrMagnitude > 0.01f)

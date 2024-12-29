@@ -20,25 +20,25 @@ public class InputController : MonoBehaviour
     {
         
         GetMousePosition();
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             _currentDirection = Direction.Forward;
             TriggerDirectionUpdate();
         }
         
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             _currentDirection = Direction.Right;
             TriggerDirectionUpdate();
         }
         
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             _currentDirection = Direction.Back;
             TriggerDirectionUpdate();
         }
         
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             _currentDirection = Direction.Left;
             TriggerDirectionUpdate();
@@ -60,10 +60,13 @@ public class InputController : MonoBehaviour
 
     private void GetMousePosition()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
-        worldPosition.y = transform.position.y;
-        player.UpdateRotation(worldPosition);
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            Vector3 targetPosition = hit.point;
+            player.UpdateRotation(targetPosition);
+        }
     }
 
     private void TriggerDirectionUpdate()

@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc44d1a50be029349876e59ed02580ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1028876035}
 --- !u!4 &533763854
 Transform:
   m_ObjectHideFlags: 0
@@ -333,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0978c40b03514f44aa03d2014d1aed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1028876035}
 --- !u!4 &596810624
 Transform:
   m_ObjectHideFlags: 0
@@ -499,6 +500,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028876035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4932433194479723303, guid: e0e3784f24263f34bac875ea822f1cd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6577470048580352452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4602a749ec59e974cadc5408bb087191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464767196
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,15 +638,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 343692874474595792, guid: e0e3784f24263f34bac875ea822f1cd9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bb6fdda072954154897070029c8b8817, type: 2}
     - target: {fileID: 1551083315675598151, guid: e0e3784f24263f34bac875ea822f1cd9,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932433194479723303, guid: e0e3784f24263f34bac875ea822f1cd9,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6499321004956094879, guid: e0e3784f24263f34bac875ea822f1cd9,
         type: 3}
