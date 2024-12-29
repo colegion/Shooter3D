@@ -43,6 +43,19 @@ public class InputController : MonoBehaviour
             _currentDirection = Direction.Left;
             TriggerDirectionUpdate();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _player.Shoot();
+        }
+
+        for (int i = 0; i < Enum.GetValues(typeof(WeaponType)).Length; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+            {
+                _player.OnWeaponChanged((WeaponType)i);
+            }
+        }
     }
 
     private void GetMousePosition()

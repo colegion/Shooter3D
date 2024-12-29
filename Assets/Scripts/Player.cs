@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Helpers;
 using Interfaces;
+using Scriptables.Weapons;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject visuals;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Weapon weapon;
+    
     private Direction _currentDirection;
+    private WeaponConfig _currentWeaponConfig;
     private float _health = Utilities.BaseHealth;
     private void OnEnable()
     {
@@ -19,6 +23,11 @@ public class Player : MonoBehaviour, IDamageable
     private void OnDisable()
     {
         RemoveListeners();
+    }
+
+    public void Initialize()
+    {
+        
     }
 
     public void MoveToDirection(Direction direction)
@@ -38,6 +47,16 @@ public class Player : MonoBehaviour, IDamageable
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
+    }
+
+    public void Shoot()
+    {
+        
+    }
+
+    public void OnWeaponChanged(WeaponType type)
+    {
+        
     }
     
     public void TakeDamage(float amount)

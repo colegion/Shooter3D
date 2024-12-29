@@ -24,4 +24,9 @@ public class Weapon : MonoBehaviour
         weaponMesh.mesh = _config.weaponMesh;
         weaponRenderer.material = _config.weaponMaterial;
     }
+
+    private void FireBullet()
+    {
+        
+    }
 }
