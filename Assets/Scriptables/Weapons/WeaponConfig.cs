@@ -11,5 +11,6 @@ namespace Scriptables.Weapons
         public float fireRate;
         public float areaOfEffect;
         public Mesh weaponMesh;
+        public Material weaponMaterial;
     }
 }
