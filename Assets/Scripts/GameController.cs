@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private Dictionary<WeaponType, IShootingStrategy> strategyByWeaponType =
-        new Dictionary<WeaponType, IShootingStrategy>();
+    private StrategyPool _strategyPool;
     private static GameController _instance;
 
     public static GameController Instance
@@ -23,22 +22,12 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        foreach (WeaponType weaponType in Enum.GetValues(typeof(WeaponType)))
-        {
-            string strategyClassName = weaponType + "ShootingStrategy";
-            
-            Type strategyType = Type.GetType(strategyClassName);
+        _strategyPool = new StrategyPool();
+        _strategyPool.PoolStrategies();
+    }
 
-            if (strategyType != null && typeof(IShootingStrategy).IsAssignableFrom(strategyType))
-            {
-                IShootingStrategy strategyInstance = (IShootingStrategy)Activator.CreateInstance(strategyType);
-                strategyByWeaponType.Add(weaponType, strategyInstance);
-            }
-            else
-            {
-                Debug.LogError(
-                    $"Strategy class {strategyClassName} not found or does not implement IShootingStrategy.");
-            }
-        }
+    public IShootingStrategy GetStrategyByType(WeaponType type)
+    {
+        return _strategyPool.GetStrategyByType(type);
     }
 }
