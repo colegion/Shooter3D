@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49455749808d13949ac23c39db2b1c53, type: 3}
-  m_Name: RocketLauncherBullet
+  m_Script: {fileID: 11500000, guid: 3a189bb168d8d90478a09ea08c2f3d72, type: 3}
+  m_Name: DefaultObject
   m_EditorClassIdentifier: 
-  speed: 10
-  bulletMesh: {fileID: 0}
-  bulletMaterial: {fileID: 0}
+  m_AddressableAssetSettingsGuid: b423df6cb0ba77f4f9544b5d202d6c29
