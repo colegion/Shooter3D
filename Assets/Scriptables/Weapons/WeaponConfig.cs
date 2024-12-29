@@ -15,5 +15,6 @@ namespace Scriptables.Weapons
         public Mesh weaponMesh;
         public Material weaponMaterial;
         public WeaponType weaponType;
+        public BulletType bulletType;
     }
 }

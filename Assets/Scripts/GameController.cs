@@ -10,6 +10,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private Player player;
     private List<WeaponConfig> _weaponConfigs = new List<WeaponConfig>();
     private StrategyPool _strategyPool;
     private static GameController _instance;
@@ -56,6 +57,11 @@ public class GameController : MonoBehaviour
     public IShootingStrategy GetStrategyByType(WeaponType type)
     {
         return _strategyPool.GetStrategyByType(type);
+    }
+
+    public WeaponConfig GetWeaponConfigByType(WeaponType type)
+    {
+        return _weaponConfigs.Find(w => w.weaponType == type);
     }
     
     private void OnDestroy()

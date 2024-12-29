@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Helpers;
 using Interfaces.WeaponStrategy;
 using Scriptables.Weapons;
 using UnityEngine;
@@ -25,8 +26,8 @@ public class Weapon : MonoBehaviour
         weaponRenderer.material = _config.weaponMaterial;
     }
 
-    private void FireBullet()
+    public void FireBullet()
     {
-        
+        _shootingStrategy.Shoot();
     }
 }

@@ -25,9 +25,14 @@ public class Player : MonoBehaviour, IDamageable
         RemoveListeners();
     }
 
-    public void Initialize()
+    private void Start()
     {
-        
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        OnWeaponChanged(WeaponType.Pistol);
     }
 
     public void MoveToDirection(Direction direction)
@@ -51,12 +56,13 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Shoot()
     {
-        
+        weapon.FireBullet();
     }
 
     public void OnWeaponChanged(WeaponType type)
     {
-        
+        _currentWeaponConfig = GameController.Instance.GetWeaponConfigByType(type);
+        weapon.Initialize(_currentWeaponConfig);
     }
     
     public void TakeDamage(float amount)
