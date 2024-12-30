@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50d310bc7c1c3348902d23037a52ced, type: 3}
-  m_Name: RocketLauncher
+  m_Script: {fileID: 11500000, guid: db8403d4fe3c85446a5f98c6f01aac93, type: 3}
+  m_Name: Scope
   m_EditorClassIdentifier: 
-  upgradeableAttributes: []
-  fireRate: 0.5
-  areaOfEffect: 0
-  weaponMesh: {fileID: 0}
-  weaponMaterial: {fileID: 0}
-  weaponType: 2
+  data:
+    type: 0
+    value: 5

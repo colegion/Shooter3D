@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Helpers;
 using Interfaces;
+using Scriptables.Upgradeables;
 using Scriptables.Weapons;
 using UnityEngine;
 
@@ -52,6 +53,11 @@ public class Player : MonoBehaviour, IDamageable
     public void Shoot()
     {
         weapon.FireBullet(GetTargetDirection());
+    }
+
+    public void ApplyUpgradeable(UpgradeableConfig config)
+    {
+        weapon.ApplyAttachment(config);
     }
     
     private Vector3 GetTargetDirection()

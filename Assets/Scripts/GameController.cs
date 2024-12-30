@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
             
             foreach (var weaponConfig in _weaponConfigs)
             {
-                Debug.Log($"Loaded Weapon Config: {weaponConfig.name}, Damage: {weaponConfig.damage}");
+                Debug.Log($"Loaded Weapon Config: {weaponConfig.name}, Damage: {weaponConfig.Damage}");
             }
             player.Initialize();
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,20 @@ namespace Helpers
             { Direction.Back , Vector3.back},
             { Direction.Left , Vector3.left}
         };
+    }
+
+    [Serializable]
+    public class UpgradeableAttribute
+    {
+        public UpgradeableType type;
+        public float value;
+    }
+
+    public enum UpgradeableType
+    {
+        Range = 0,
+        Penetration,
+        Damage
     }
 
     public enum WeaponType
