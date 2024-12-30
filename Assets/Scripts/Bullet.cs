@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using EnemySystem;
 using Scriptables.Bullets;
 using Scriptables.Weapons;
 using UnityEngine;
