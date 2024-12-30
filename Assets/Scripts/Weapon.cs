@@ -64,6 +64,17 @@ public class Weapon : MonoBehaviour
         return Time.time >= _lastFireTime + (1f / _config.fireRate);
     }
 
+    public bool IsAttachmentExists(UpgradeableConfig attachmentData)
+    {
+        if (_collectedAttachmentsByWeapon.TryGetValue(_config.weaponType, out var attachments))
+        {
+            return attachments.Contains(attachmentData);
+        }
+
+        return false;
+    }
+
+
     public float GetRange()
     {
         return _config.Range;

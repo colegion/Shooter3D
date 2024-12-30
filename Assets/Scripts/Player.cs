@@ -55,6 +55,11 @@ public class Player : MonoBehaviour, IDamageable
         weapon.FireBullet(GetTargetDirection());
     }
 
+    public bool IsAlreadyAttachedToCurrentWeapon(UpgradeableConfig config)
+    {
+        return weapon.IsAttachmentExists(config);
+    }
+
     public void ApplyUpgradeable(UpgradeableConfig config)
     {
         weapon.ApplyAttachment(config);

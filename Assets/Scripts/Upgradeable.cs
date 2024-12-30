@@ -19,6 +19,7 @@ public class Upgradeable : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Player player))
         {
+            if (player.IsAlreadyAttachedToCurrentWeapon(_config)) return;
             player.ApplyUpgradeable(_config);
             ResetSelf();
         }
