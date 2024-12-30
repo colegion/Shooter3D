@@ -26,8 +26,13 @@ public class Weapon : MonoBehaviour
         weaponRenderer.material = _config.weaponMaterial;
     }
 
-    public void FireBullet()
+    public void FireBullet(Vector3 target)
     {
-        _shootingStrategy.Shoot();
+        _shootingStrategy.Shoot(target, _config);
+    }
+
+    public float GetRange()
+    {
+        return _config.range;
     }
 }

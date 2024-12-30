@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplodeableBullet : Bullet
 {
-    public override void Explode()
+    protected override void Explode()
     {
         Debug.LogError("explode");
     }

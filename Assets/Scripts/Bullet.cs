@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Scriptables.Bullets;
+using Scriptables.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,28 +11,32 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
-    private BulletConfig _config;
+    private WeaponConfig _weaponConfig;
 
-    public void Initialize(BulletConfig config)
+    public void Initialize(WeaponConfig parentWeaponConfig)
     {
-        _config = config;
-        SetVisuals();
+        _weaponConfig = parentWeaponConfig;
     }
 
-    private void SetVisuals()
+    public void MoveTowardsTarget(Vector3 target)
     {
-        bulletMesh.mesh = _config.bulletMesh;
-        bulletRenderer.material = _config.bulletMaterial;
+        transform.DOMove(target, 2f).OnComplete(ResetSelf);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         Explode();
     }
-    
 
-    public virtual void Explode()
+    protected virtual void Explode()
     {
-        
+        ResetSelf();
+    }
+
+    private void ResetSelf()
+    {
+        bulletRenderer.material = null;
+        bulletMesh.mesh = null;
+        gameObject.SetActive(false);
     }
 }

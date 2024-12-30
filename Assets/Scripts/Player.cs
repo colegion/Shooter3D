@@ -56,7 +56,13 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Shoot()
     {
-        weapon.FireBullet();
+        weapon.FireBullet(GetTargetDirection());
+    }
+    
+    private Vector3 GetTargetDirection()
+    {
+        Vector3 playerForward = transform.forward;
+        return playerForward * weapon.GetRange();
     }
 
     public void OnWeaponChanged(WeaponType type)
