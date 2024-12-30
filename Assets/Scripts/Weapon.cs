@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
 
     private WeaponConfig _config;
     private IShootingStrategy _shootingStrategy;
+    private float _lastFireTime;
 
     public void Initialize(WeaponConfig config)
     {
@@ -28,7 +29,16 @@ public class Weapon : MonoBehaviour
 
     public void FireBullet(Vector3 target)
     {
-        _shootingStrategy.Shoot(target, _config);
+        if (CanFire())
+        {
+            _lastFireTime = Time.time;
+            _shootingStrategy.Shoot(target, _config);
+        }
+    }
+    
+    private bool CanFire()
+    {
+        return Time.time >= _lastFireTime + (1f / _config.fireRate);
     }
 
     public float GetRange()
