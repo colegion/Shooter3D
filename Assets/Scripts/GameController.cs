@@ -63,7 +63,17 @@ public class GameController : MonoBehaviour
 
     public WeaponConfig GetWeaponConfigByType(WeaponType type)
     {
-        return _weaponConfigs.Find(w => w.weaponType == type);
+        foreach (var config in _weaponConfigs)
+        {
+            Debug.Log("checking config type: " + config.weaponType);
+            if (config.weaponType == type)
+            {
+                Debug.Log("found type :" + type);
+                return config;
+            }
+        }
+
+        return null;
     }
     
     private void OnDestroy()

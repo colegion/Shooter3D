@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b50d310bc7c1c3348902d23037a52ced, type: 3}
-  m_Name: Rocket Launcher
+  m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   damage: 0
   armorPenetration: 0
-  range: 0
+  range: 10
   fireRate: 0
   areaOfEffect: 0
   weaponMesh: {fileID: 0}
+  weaponMaterial: {fileID: 0}
+  weaponType: 2
+  bulletType: 2

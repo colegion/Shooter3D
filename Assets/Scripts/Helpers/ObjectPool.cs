@@ -30,6 +30,7 @@ namespace Helpers
 
         private void Awake()
         {
+            _instance = this;
             _pooledBullets = new Dictionary<BulletType, Queue<Bullet>>();
             PoolBullets();
         }

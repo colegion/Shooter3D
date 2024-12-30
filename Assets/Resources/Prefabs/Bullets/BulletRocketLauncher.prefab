@@ -8,11 +8,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 110476412958922886, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045394399394389247, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186206539747680447, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 5394814647861348636, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_Name
       value: BulletRocketLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 5984104327759995235, guid: 6818d287cda66f0438bfe5578f2fd126,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94aa13703df4b1946b9d7f2a8f319e05, type: 2}
     - target: {fileID: 6649480836125455325, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -103,5 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ac9bfc95bdc594b857d72d56d5bef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visuals: {fileID: 8429721563073192372}
   bulletMesh: {fileID: 3642574209636604301}
   bulletRenderer: {fileID: 2774166249059866705}
+--- !u!1 &8429721563073192372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 110476412958922886, guid: 6818d287cda66f0438bfe5578f2fd126,
+    type: 3}
+  m_PrefabInstance: {fileID: 8463423336906783026}
+  m_PrefabAsset: {fileID: 0}

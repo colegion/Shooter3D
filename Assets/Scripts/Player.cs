@@ -25,11 +25,6 @@ public class Player : MonoBehaviour, IDamageable
         RemoveListeners();
     }
 
-    private void Start()
-    {
-        //Initialize();
-    }
-
     public void Initialize()
     {
         OnWeaponChanged(WeaponType.Pistol);

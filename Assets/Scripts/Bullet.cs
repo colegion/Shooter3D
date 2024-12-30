@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject visuals;
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
     private WeaponConfig _weaponConfig;
@@ -20,12 +21,21 @@ public class Bullet : MonoBehaviour
 
     public void MoveTowardsTarget(Vector3 target)
     {
+        visuals.gameObject.SetActive(true);
+        Vector3 directionToTarget = (target - transform.position).normalized;
+        if (directionToTarget != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(directionToTarget);
+        }
         transform.DOMove(target, 2f).OnComplete(ResetSelf);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Explode();
+        if (other.gameObject.TryGetComponent(out Enemy enemy))
+        {
+            Explode();
+        }
     }
 
     protected virtual void Explode()
@@ -37,6 +47,6 @@ public class Bullet : MonoBehaviour
     {
         bulletRenderer.material = null;
         bulletMesh.mesh = null;
-        gameObject.SetActive(false);
+        visuals.gameObject.SetActive(false);
     }
 }

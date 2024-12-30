@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592575800788d1c4bb33941cc1460e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visuals: {fileID: 110476412958922886}
   bulletMesh: {fileID: 5186206539747680447}
   bulletRenderer: {fileID: 5984104327759995235}
 --- !u!135 &5045394399394389247

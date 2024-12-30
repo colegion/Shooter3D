@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   armorPenetration: 0
-  range: 0
+  range: 10
   fireRate: 0
   areaOfEffect: 0
   weaponMesh: {fileID: 0}
+  weaponMaterial: {fileID: 0}
+  weaponType: 0
+  bulletType: 0
