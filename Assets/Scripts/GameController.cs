@@ -43,11 +43,34 @@ public class GameController : MonoBehaviour
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
             _weaponConfigs = new List<WeaponConfig>(handle.Result);
-            
-            foreach (var weaponConfig in _weaponConfigs)
+            string jsonPath = "JSON/DefaultWeaponConfigs";
+            TextAsset jsonFile = Resources.Load<TextAsset>(jsonPath);
+
+            if (jsonFile != null)
             {
-                Debug.Log($"Loaded Weapon Config: {weaponConfig.name}, Damage: {weaponConfig.Damage}");
+                WeaponConfigsJson weaponConfigsJson = JsonUtility.FromJson<WeaponConfigsJson>(jsonFile.text);
+
+                foreach (var weaponData in weaponConfigsJson.configs)
+                {
+                    weaponData.InitializeAttributes();
+                    WeaponConfig weaponConfig = _weaponConfigs.Find(config => config.weaponType.ToString() == weaponData.weaponType);
+
+                    if (weaponConfig != null)
+                    {
+                        weaponConfig.Initialize(weaponData);
+                        Debug.Log($"Initialized WeaponConfig: {weaponConfig.name}, Damage: {weaponConfig.Damage}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"WeaponConfig for {weaponData.weaponType} not found.");
+                    }
+                }
             }
+            else
+            {
+                Debug.LogError("Failed to load WeaponConfigs JSON.");
+            }
+
             player.Initialize();
         }
         else
@@ -55,6 +78,8 @@ public class GameController : MonoBehaviour
             Debug.LogError("Failed to load WeaponConfigs.");
         }
     }
+
+
 
     public IShootingStrategy GetStrategyByType(WeaponType type)
     {

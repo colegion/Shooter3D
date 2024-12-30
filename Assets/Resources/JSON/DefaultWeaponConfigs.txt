@@ -1,0 +1,61 @@
+{
+  "configs": [
+    {
+      "weaponType": "Pistol",
+      "attributes": [
+        {
+          "type": 0,  
+          "value": 50
+        },
+        {
+          "type": 1,  
+          "value": 10
+        },
+        {
+          "type": 2,  
+          "value": 20
+        }
+      ],
+      "fireRate": 1.5,
+      "areaOfEffect": 1.0
+    },
+    {
+      "weaponType": "Rifle",
+      "attributes": [
+        {
+          "type": 0,
+          "value": 100
+        },
+        {
+          "type": 1,  
+          "value": 20
+        },
+        {
+          "type": 2, 
+          "value": 50
+        }
+      ],
+      "fireRate": 1.2,
+      "areaOfEffect": 5.0
+    },
+    {
+      "weaponType": "RocketLauncher",
+      "attributes": [
+        {
+          "type": 0, 
+          "value": 200
+        },
+        {
+          "type": 1,
+          "value": 50
+        },
+        {
+          "type": 2,
+          "value": 100
+        }
+      ],
+      "fireRate": 0.8,
+      "areaOfEffect": 10.0
+    }
+  ]
+}

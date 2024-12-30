@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Helpers
 {
@@ -18,14 +19,44 @@ namespace Helpers
             { Direction.Left , Vector3.left}
         };
     }
+    
+    [Serializable]
+    public class WeaponConfigsJson
+    {
+        public List<WeaponData> configs;
+    }
+
+    [Serializable]
+    public class WeaponData
+    {
+        public List<UpgradeableAttribute> attributes;
+        public float fireRate;
+        public float areaOfEffect;
+        public string weaponType;
+        
+        public void InitializeAttributes()
+        {
+            foreach (var attribute in attributes)
+            {
+                attribute.type = (int)attribute.GetUpgradeableType();
+            }
+        }
+    }
 
     [Serializable]
     public class UpgradeableAttribute
     {
-        public UpgradeableType type;
+        public int type; 
         public float value;
+
+        public UpgradeableType GetUpgradeableType()
+        {
+            return (UpgradeableType)type;
+        }
     }
 
+    
+    [Serializable]
     public enum UpgradeableType
     {
         Range = 0,
@@ -33,6 +64,7 @@ namespace Helpers
         Damage
     }
 
+    [Serializable]
     public enum WeaponType
     {
         Pistol = 0,

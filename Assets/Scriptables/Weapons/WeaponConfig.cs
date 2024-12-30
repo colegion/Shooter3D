@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Helpers;
 using Interfaces.WeaponStrategy;
 using Scriptables.Upgradeables;
@@ -19,17 +21,38 @@ namespace Scriptables.Weapons
         public float Damage => GetAttributeValue(UpgradeableType.Damage);
         public float ArmorPenetration => GetAttributeValue(UpgradeableType.Penetration);
         public float Range => GetAttributeValue(UpgradeableType.Range);
+
+        public void Initialize(WeaponData data)
+        {
+            // Initialize upgradeable attributes with their integer types
+            upgradeableAttributes = data.attributes.Select(attr => new UpgradeableAttribute
+            {
+                type = attr.type,  // Store the int value of the type
+                value = attr.value
+            }).ToList();
         
+            fireRate = data.fireRate;
+            areaOfEffect = data.areaOfEffect;
+        
+            // Parse the weapon type string into an enum
+            if (Enum.TryParse(data.weaponType, out WeaponType weaponTypeEnum))
+                weaponType = weaponTypeEnum;
+        }
+
         public void ApplyEffect(UpgradeableConfig attribute)
         {
             var field = upgradeableAttributes.Find(x => x.type == attribute.data.type);
-            field.value += attribute.data.value;
+            if (field != null)
+            {
+                field.value += attribute.data.value;
+            }
         }
         
         private float GetAttributeValue(UpgradeableType type)
         {
-            var attribute = upgradeableAttributes.Find(x => x.type == type);
+            var attribute = upgradeableAttributes.Find(x => x.type == (int)type);
             return attribute?.value ?? 0f;
         }
+
     }
 }
