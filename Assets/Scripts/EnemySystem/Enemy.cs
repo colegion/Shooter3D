@@ -46,6 +46,7 @@ namespace EnemySystem
             _patrolState = null;
             _attackState = null;
             _dieState = null;
+            PoolController.Instance.EnqueueItemToPool(PoolableTypes.Enemy, this);
         }
 
         public void ReSpawn()
@@ -56,24 +57,14 @@ namespace EnemySystem
 
         public void OnCreatedForPool()
         {
-            throw new NotImplementedException();
+            visuals.gameObject.SetActive(false);
         }
-
-        public void OnAssignPool()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void OnReleasePool()
         {
-            throw new NotImplementedException();
+            visuals.gameObject.SetActive(true);
         }
-
-        public void OnDeletePool()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public GameObject GameObject()
         {
             return gameObject;

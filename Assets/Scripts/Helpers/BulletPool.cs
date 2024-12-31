@@ -10,7 +10,7 @@ namespace Helpers
 
     public class BulletPool : MonoBehaviour
     {
-        private readonly int _poolAmount = 100;
+        /*private readonly int _poolAmount = 100;
         private static Dictionary<BulletType, Queue<Bullet>> _pooledBullets;
 
         private static BulletPool _instance;
@@ -86,6 +86,6 @@ namespace Helpers
             {
                 Debug.LogError($"Bullet pool for type {type} not found. Returning bullet failed.");
             }
-        }
+        }*/
     }
 }

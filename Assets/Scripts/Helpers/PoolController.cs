@@ -70,7 +70,6 @@ namespace Helpers
                     {
                         pool.Enqueue(poolable);
                         poolable.OnCreatedForPool();
-                        poolable.OnAssignPool();
                     }
                     else
                     {
@@ -82,8 +81,6 @@ namespace Helpers
                 _prefabPools.Add(poolName, prefab);
             }
         }
-
-
 
         public IPoolable GetItemFromPool(PoolableTypes poolName)
         {
@@ -125,7 +122,6 @@ namespace Helpers
         {
             if (_pools.ContainsKey(poolName))
             {
-                item.OnAssignPool();
                 _pools[poolName].Enqueue(item as Object);
             }
             else

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using EnemySystem;
+using Helpers;
 using Interfaces;
 using Scriptables.Bullets;
 using Scriptables.Weapons;
@@ -50,23 +51,17 @@ public class Bullet : MonoBehaviour, IPoolable
         bulletRenderer.material = null;
         bulletMesh.mesh = null;
         visuals.gameObject.SetActive(false);
+        PoolController.Instance.EnqueueItemToPool(Utilities.BulletTypesByWeapons[_weaponConfig.weaponType], this);
     }
 
     public void OnCreatedForPool()
     {
-    }
-
-    public void OnAssignPool()
-    {
+        visuals.gameObject.SetActive(false);
     }
 
     public void OnReleasePool()
     {
+        visuals.gameObject.SetActive(true);
     }
-
-    public void OnDeletePool()
-    {
-    }
-
     public GameObject GameObject() => gameObject;
 }

@@ -19,6 +19,14 @@ namespace Helpers
             { Direction.Back , Vector3.back},
             { Direction.Left , Vector3.left}
         };
+
+        public static Dictionary<WeaponType, PoolableTypes> BulletTypesByWeapons =
+            new Dictionary<WeaponType, PoolableTypes>()
+            {
+                { WeaponType.Pistol , PoolableTypes.BulletPistol},
+                { WeaponType.Rifle , PoolableTypes.BulletRifle},
+                { WeaponType.RocketLauncher , PoolableTypes.BulletRocketLauncher},
+            };
     }
 
     public enum PoolableTypes
@@ -26,7 +34,7 @@ namespace Helpers
         BulletPistol = 0,
         BulletRifle,
         BulletRocketLauncher,
-        //Enemy,
+        Enemy,
     }
     
     [Serializable]
@@ -79,13 +87,6 @@ namespace Helpers
         Pistol = 0,
         Rifle,
         RocketLauncher,
-    }
-
-    public enum BulletType
-    {
-        Pistol = 0,
-        Rifle,
-        RocketLauncher
     }
 
     public enum Direction
