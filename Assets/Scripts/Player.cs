@@ -15,7 +15,9 @@ public class Player : MonoBehaviour, IDamageable
     
     private Direction _currentDirection;
     private WeaponConfig _currentWeaponConfig;
+    
     private float _health = Utilities.BaseHealth;
+    private float _armor = Utilities.BaseArmor;
     private void OnEnable()
     {
         AddListeners();

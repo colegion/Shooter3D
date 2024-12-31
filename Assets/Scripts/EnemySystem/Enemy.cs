@@ -9,13 +9,11 @@ namespace EnemySystem
     {
         [SerializeField] private GameObject visuals;
         private float _health = Utilities.BaseHealth;
-
+        private float _armor = Utilities.BaseArmor;
         private IEnemyState _currentState;
-
         private PatrolState _patrolState;
         private AttackState _attackState;
         private DieState _dieState;
-        private IPoolable _poolableImplementation;
 
         public void Initialize()
         {
@@ -47,6 +45,7 @@ namespace EnemySystem
             _attackState = null;
             _dieState = null;
             PoolController.Instance.EnqueueItemToPool(PoolableTypes.Enemy, this);
+            EventBus.Trigger(new OnEnemyDie());
         }
 
         public void ReSpawn()

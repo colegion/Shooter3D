@@ -8,6 +8,7 @@ namespace Helpers
     public class Utilities : MonoBehaviour
     {
         public static int BaseHealth = 100;
+        public static int BaseArmor = 100;
         public static readonly string BulletPath = "Prefabs/Bullets/Bullet";
         public static readonly string PrefabPath = "Prefabs/";
         public static readonly string WeaponConfigLabel = "WeaponConfigs";
@@ -105,5 +106,10 @@ namespace Helpers
         {
             Direction = direction;
         }
+    }
+
+    public class OnEnemyDie
+    {
+        
     }
 }
