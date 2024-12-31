@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using EnemySystem;
+using Interfaces;
 using Scriptables.Bullets;
 using Scriptables.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPoolable
 {
     [SerializeField] private GameObject visuals;
     [SerializeField] private MeshFilter bulletMesh;
@@ -50,4 +51,22 @@ public class Bullet : MonoBehaviour
         bulletMesh.mesh = null;
         visuals.gameObject.SetActive(false);
     }
+
+    public void OnCreatedForPool()
+    {
+    }
+
+    public void OnAssignPool()
+    {
+    }
+
+    public void OnReleasePool()
+    {
+    }
+
+    public void OnDeletePool()
+    {
+    }
+
+    public GameObject GameObject() => gameObject;
 }

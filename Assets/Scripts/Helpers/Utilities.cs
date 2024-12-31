@@ -9,6 +9,7 @@ namespace Helpers
     {
         public static int BaseHealth = 100;
         public static readonly string BulletPath = "Prefabs/Bullets/Bullet";
+        public static readonly string PrefabPath = "Prefabs/";
         public static readonly string WeaponConfigLabel = "WeaponConfigs";
 
         public static Dictionary<Direction, Vector3> DirectionVectors = new Dictionary<Direction, Vector3>()
@@ -18,6 +19,14 @@ namespace Helpers
             { Direction.Back , Vector3.back},
             { Direction.Left , Vector3.left}
         };
+    }
+
+    public enum PoolableTypes
+    {
+        BulletPistol = 0,
+        BulletRifle,
+        BulletRocketLauncher,
+        //Enemy,
     }
     
     [Serializable]

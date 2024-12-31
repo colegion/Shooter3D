@@ -8,20 +8,20 @@ namespace Helpers
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class ObjectPool : MonoBehaviour
+    public class BulletPool : MonoBehaviour
     {
         private readonly int _poolAmount = 100;
         private static Dictionary<BulletType, Queue<Bullet>> _pooledBullets;
 
-        private static ObjectPool _instance;
+        private static BulletPool _instance;
 
-        public static ObjectPool Instance
+        public static BulletPool Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new GameObject("ObjectPool").AddComponent<ObjectPool>();
+                    _instance = new GameObject("BulletPool").AddComponent<BulletPool>();
                 }
 
                 return _instance;

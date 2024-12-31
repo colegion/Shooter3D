@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace EnemySystem
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IDamageable, IPoolable
     {
         [SerializeField] private GameObject visuals;
         private float _health = Utilities.BaseHealth;
@@ -15,6 +15,7 @@ namespace EnemySystem
         private PatrolState _patrolState;
         private AttackState _attackState;
         private DieState _dieState;
+        private IPoolable _poolableImplementation;
 
         public void Initialize()
         {
@@ -51,6 +52,31 @@ namespace EnemySystem
         {
             _health = Utilities.BaseHealth;
             visuals.gameObject.SetActive(true);
+        }
+
+        public void OnCreatedForPool()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnAssignPool()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnReleasePool()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDeletePool()
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameObject GameObject()
+        {
+            return gameObject;
         }
     }
 }

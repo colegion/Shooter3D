@@ -8,9 +8,18 @@ namespace Interfaces.WeaponStrategy
     {
         public void Shoot(Vector3 target, WeaponConfig config)
         {
-            var bullet = ObjectPool.Instance.GetAvailableBullet(BulletType.Pistol);
-            bullet.Initialize(config);
-            bullet.MoveTowardsTarget(target);
+            var bullet = PoolController.Instance.GetItemFromPool(PoolableTypes.BulletPistol) as Bullet;
+            if (bullet != null)
+            {
+                bullet.Initialize(config);
+                bullet.MoveTowardsTarget(target);
+            }
+            else
+            {
+                Debug.LogError("Pooled object is not of type Bullet.");
+            }
         }
+
+
     }
 }
