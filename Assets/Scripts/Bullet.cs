@@ -38,6 +38,7 @@ public class Bullet : MonoBehaviour, IPoolable
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
+            Debug.Log($"Hit: {other.gameObject.name}" , other.gameObject);
             enemy.TakeDamage(_weaponConfig.Damage, _weaponConfig.ArmorPenetration);
             Explode();
         }
@@ -50,6 +51,7 @@ public class Bullet : MonoBehaviour, IPoolable
 
     private void ResetSelf()
     {
+        bulletCollider.enabled = false;
         bulletRenderer.material = null;
         bulletMesh.mesh = null;
         visuals.gameObject.SetActive(false);

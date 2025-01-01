@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Helpers;
 using UnityEngine;
 
 public abstract class BaseDamageable : MonoBehaviour
 {
-    public float Health { get; protected set; } = Utilities.BaseHealth;
-    public float Armor { get; protected set; } = Utilities.BaseArmor;
+    // Abstract methods to access health and armor from derived classes
+    protected abstract float Health { get; set; }
+    protected abstract float Armor { get; set; }
 
-    public virtual void TakeDamage(float damage, float armorPenetration)
+    // Common damage calculation logic
+    public void TakeDamage(float damage, float armorPenetration)
     {
         float damageToHealth = damage * armorPenetration;
         float damageToArmor = damage - damageToHealth;
+
+        // Apply damage to armor first
         if (Armor > 0)
         {
             if (damageToArmor > Armor)
             {
-                
                 damageToHealth += (damageToArmor - Armor);
                 Armor = 0;
             }
@@ -25,21 +25,16 @@ public abstract class BaseDamageable : MonoBehaviour
                 Armor -= damageToArmor;
             }
         }
+
+        // Apply remaining damage to health
         Health -= damageToHealth;
-        
+
         if (Health <= 0)
         {
             Health = 0;
             Die();
         }
     }
-
-    protected void Reset()
-    {
-        Health = Utilities.BaseHealth;
-        Armor = Utilities.BaseArmor;
-    }
-
 
     public abstract void Die();
     public abstract void ReSpawn();

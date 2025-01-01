@@ -36,7 +36,7 @@
         }
       ],
       "fireRate": 1.2,
-      "areaOfEffect": 5.0
+      "areaOfEffect": 1.0
     },
     {
       "weaponType": "RocketLauncher",
@@ -55,7 +55,7 @@
         }
       ],
       "fireRate": 0.8,
-      "areaOfEffect": 10.0
+      "areaOfEffect": 5.0
     }
   ]
 }

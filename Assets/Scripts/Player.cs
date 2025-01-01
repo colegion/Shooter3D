@@ -16,6 +16,21 @@ public class Player : BaseDamageable
     private Direction _currentDirection;
     private WeaponConfig _currentWeaponConfig;
     
+    private float _health = Utilities.BaseHealth;
+    private float _armor = Utilities.BaseArmor;
+        
+    protected override float Health
+    {
+        get => _health;
+        set => _health = value;
+    }
+
+    protected override float Armor
+    {
+        get => _armor;
+        set => _armor = value;
+    }
+    
     private void OnEnable()
     {
         AddListeners();
@@ -87,7 +102,8 @@ public class Player : BaseDamageable
     public override void ReSpawn()
     {
         visuals.SetActive(true);
-        Reset();
+        _health = Utilities.BaseHealth;
+        _armor = Utilities.BaseArmor;
     }
 
     private void AddListeners()
