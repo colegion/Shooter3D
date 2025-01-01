@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
         if (CanFire())
         {
             _lastFireTime = Time.time;
-            _shootingStrategy.Shoot(target, _config);
+            _shootingStrategy.Shoot(target, _config, transform);
         }
     }
 

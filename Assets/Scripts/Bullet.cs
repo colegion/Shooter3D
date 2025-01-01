@@ -12,6 +12,7 @@ using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour, IPoolable
 {
+    [SerializeField] private Collider bulletCollider;
     [SerializeField] private GameObject visuals;
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
@@ -30,13 +31,14 @@ public class Bullet : MonoBehaviour, IPoolable
         {
             transform.rotation = Quaternion.LookRotation(directionToTarget);
         }
-        transform.DOMove(target, 2f).OnComplete(ResetSelf);
+        transform.DOMove(target, 5f).OnComplete(ResetSelf);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
+            enemy.TakeDamage(10);
             Explode();
         }
     }
@@ -57,11 +59,13 @@ public class Bullet : MonoBehaviour, IPoolable
     public void OnCreatedForPool()
     {
         visuals.gameObject.SetActive(false);
+        bulletCollider.enabled = false;
     }
 
     public void OnReleasePool()
     {
         visuals.gameObject.SetActive(true);
+        bulletCollider.enabled = true;
     }
     public GameObject GameObject() => gameObject;
 }

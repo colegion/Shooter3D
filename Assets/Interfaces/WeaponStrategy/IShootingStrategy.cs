@@ -6,6 +6,6 @@ namespace Interfaces.WeaponStrategy
 {
     public interface IShootingStrategy
     {
-        public abstract void Shoot(Vector3 target, WeaponConfig config);
+        public abstract void Shoot(Vector3 target, WeaponConfig config, Transform initialPosition);
     }
 }

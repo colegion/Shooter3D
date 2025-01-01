@@ -16,17 +16,17 @@ PrefabInstance:
     - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4072887810576542912, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5045394399394389247, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5186206539747680447, guid: 6818d287cda66f0438bfe5578f2fd126,
         type: 3}
@@ -135,6 +135,12 @@ MeshFilter:
     type: 3}
   m_PrefabInstance: {fileID: 8463423336906783026}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &3706684416227124685 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 5045394399394389247, guid: 6818d287cda66f0438bfe5578f2fd126,
+    type: 3}
+  m_PrefabInstance: {fileID: 8463423336906783026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4587520925411176494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5394814647861348636, guid: 6818d287cda66f0438bfe5578f2fd126,
@@ -153,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ac9bfc95bdc594b857d72d56d5bef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletCollider: {fileID: 3706684416227124685}
   visuals: {fileID: 8429721563073192372}
   bulletMesh: {fileID: 3642574209636604301}
   bulletRenderer: {fileID: 2774166249059866705}

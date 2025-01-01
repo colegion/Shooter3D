@@ -30,7 +30,7 @@ namespace EnemySystem
             _currentState = newState;
             _currentState.EnterState(this);
         }
-    
+
         public void TakeDamage(float amount)
         {
             _health -= amount;
