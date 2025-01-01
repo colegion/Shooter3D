@@ -7,7 +7,7 @@ using Scriptables.Upgradeables;
 using Scriptables.Weapons;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : BaseDamageable
 {
     [SerializeField] private GameObject visuals;
     [SerializeField] private float moveSpeed;
@@ -16,8 +16,6 @@ public class Player : MonoBehaviour, IDamageable
     private Direction _currentDirection;
     private WeaponConfig _currentWeaponConfig;
     
-    private float _health = Utilities.BaseHealth;
-    private float _armor = Utilities.BaseArmor;
     private void OnEnable()
     {
         AddListeners();
@@ -42,8 +40,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public void UpdateRotation(Vector3 target)
     {
-        target.y = transform.position.y;
-        Vector3 direction = target - transform.position;
+        var position = transform.position;
+        target.y = position.y;
+        Vector3 direction = target - position;
         direction.y = 0;
         if (direction.sqrMagnitude > 0.01f)
         {
@@ -78,25 +77,17 @@ public class Player : MonoBehaviour, IDamageable
         _currentWeaponConfig = GameController.Instance.GetWeaponConfigByType(type);
         weapon.Initialize(_currentWeaponConfig);
     }
-    
-    public void TakeDamage(float amount)
-    {
-        _health -= amount;
-        if (_health <= 0)
-        {
-            Die();
-        }
-    }
 
-    public void Die()
+    public override void Die()
     {
         visuals.SetActive(false);
+        EventBus.Trigger(new OnGameOver());
     }
 
-    public void ReSpawn()
+    public override void ReSpawn()
     {
-        _health = Utilities.BaseHealth;
         visuals.SetActive(true);
+        Reset();
     }
 
     private void AddListeners()

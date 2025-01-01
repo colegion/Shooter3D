@@ -112,4 +112,9 @@ namespace Helpers
     {
         
     }
+
+    public class OnGameOver
+    {
+        
+    }
 }

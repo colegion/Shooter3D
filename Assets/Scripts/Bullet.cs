@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour, IPoolable
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(10);
+            enemy.TakeDamage(_weaponConfig.Damage, _weaponConfig.ArmorPenetration);
             Explode();
         }
     }

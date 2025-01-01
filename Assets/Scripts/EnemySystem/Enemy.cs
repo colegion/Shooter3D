@@ -5,11 +5,9 @@ using UnityEngine;
 
 namespace EnemySystem
 {
-    public class Enemy : MonoBehaviour, IDamageable, IPoolable
+    public class Enemy : BaseDamageable, IPoolable
     {
         [SerializeField] private GameObject visuals;
-        private float _health = Utilities.BaseHealth;
-        private float _armor = Utilities.BaseArmor;
         private IEnemyState _currentState;
         private PatrolState _patrolState;
         private AttackState _attackState;
@@ -30,15 +28,9 @@ namespace EnemySystem
             _currentState = newState;
             _currentState.EnterState(this);
         }
+        
 
-        public void TakeDamage(float amount)
-        {
-            _health -= amount;
-            if(_health <= 0)
-                Die();
-        }
-
-        public void Die()
+        public override void Die()
         {
             visuals.gameObject.SetActive(false);
             _patrolState = null;
@@ -48,9 +40,9 @@ namespace EnemySystem
             EventBus.Trigger(new OnEnemyDie());
         }
 
-        public void ReSpawn()
+        public override void ReSpawn()
         {
-            _health = Utilities.BaseHealth;
+            Reset();
             visuals.gameObject.SetActive(true);
         }
 
