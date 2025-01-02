@@ -73,6 +73,14 @@ public class Weapon : MonoBehaviour
         return false;
     }
 
+    public void ClearAttachments()
+    {
+        foreach (var key in _collectedAttachmentsByWeapon.Keys.ToList())
+        {
+            _collectedAttachmentsByWeapon[key].Clear();
+        }
+    }
+
 
     public float GetRange()
     {

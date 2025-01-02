@@ -32,7 +32,17 @@ public class GameController : MonoBehaviour
         _strategyPool.PoolStrategies();
         LoadWeaponConfigs();
     }
-    
+
+    private void OnEnable()
+    {
+        AddListeners();
+    }
+
+    private void OnDisable()
+    {
+        RemoveListeners();
+    }
+
     private void LoadWeaponConfigs()
     {
         Addressables.LoadAssetsAsync<WeaponConfig>(Utilities.WeaponConfigLabel, null).Completed += OnWeaponConfigsLoaded;
@@ -95,6 +105,21 @@ public class GameController : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void HandleOnGameOver(OnGameOver e)
+    {
+        player.ReSpawn();
+    }
+
+    private void AddListeners()
+    {
+        EventBus.Register<OnGameOver>(HandleOnGameOver);
+    }
+
+    private void RemoveListeners()
+    {
+        EventBus.Unregister<OnGameOver>(HandleOnGameOver);
     }
     
     private void OnDestroy()

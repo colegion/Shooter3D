@@ -104,6 +104,9 @@ public class Player : BaseDamageable
         visuals.SetActive(true);
         _health = Utilities.BaseHealth;
         _armor = Utilities.BaseArmor;
+        weapon.ClearAttachments();
+        OnWeaponChanged(WeaponType.Pistol);
+        
     }
 
     private void AddListeners()
