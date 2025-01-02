@@ -13,7 +13,7 @@ using UnityEngine.Serialization;
 public class Bullet : MonoBehaviour, IPoolable
 {
     [SerializeField] private Collider bulletCollider;
-    [SerializeField] private GameObject visuals;
+    [SerializeField] protected GameObject visuals;
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
     protected WeaponConfig WeaponConfig;
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour, IPoolable
         {
             transform.rotation = Quaternion.LookRotation(directionToTarget);
         }
-        transform.DOMove(target, 5f).OnComplete(ResetSelf);
+        transform.DOMove(target, 3.5f).OnComplete(ResetSelf);
     }
 
     private void OnCollisionEnter(Collision other)

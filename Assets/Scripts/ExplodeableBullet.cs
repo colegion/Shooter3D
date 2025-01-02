@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using EnemySystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExplodeableBullet : Bullet
@@ -28,16 +29,17 @@ public class ExplodeableBullet : Bullet
         
         explosionEffect.gameObject.SetActive(true);
         explosionEffect.Play();
+        visuals.GameObject().SetActive(false);
         DOVirtual.DelayedCall(2f, () =>
         {
             explosionEffect.gameObject.SetActive(false);
+            ResetSelf();
         });
-
-        ResetSelf();
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        explosionEffect.transform.position = other.contacts[0].point;
         Explode();
     }
 }

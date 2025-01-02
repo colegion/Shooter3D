@@ -5,7 +5,7 @@
       "attributes": [
         {
           "type": 0,  
-          "value": 50
+          "value": 40
         },
         {
           "type": 1,  
@@ -24,7 +24,7 @@
       "attributes": [
         {
           "type": 0,
-          "value": 100
+          "value": 45
         },
         {
           "type": 1,  
@@ -43,7 +43,7 @@
       "attributes": [
         {
           "type": 0, 
-          "value": 200
+          "value": 50
         },
         {
           "type": 1,
