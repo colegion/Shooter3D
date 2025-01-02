@@ -39,19 +39,19 @@ MonoBehaviour:
     m_Address: Assets/Scriptables/Upgradeables/ArmorPenetration.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Upgradeables
+    - Attachments
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29a81d83c405f034791da2227ce2e7c4
     m_Address: Assets/Scriptables/Upgradeables/Barrel.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Upgradeables
+    - Attachments
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b9d9cc88bda63e043aa519141c06b665
     m_Address: Assets/Scriptables/Upgradeables/Scope.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Upgradeables
+    - Attachments
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b423df6cb0ba77f4f9544b5d202d6c29, type: 2}

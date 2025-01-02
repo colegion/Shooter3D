@@ -7,13 +7,12 @@ namespace Helpers
 {
     public class Utilities : MonoBehaviour
     {
-        public static int BaseHealth = 100;
-        public static int BaseArmor = 100;
-        public static readonly string BulletPath = "Prefabs/Bullets/Bullet";
+        public static readonly int BaseHealth = 100;
+        public static readonly int BaseArmor = 100;
         public static readonly string PrefabPath = "Prefabs/";
         public static readonly string WeaponConfigLabel = "WeaponConfigs";
 
-        public static Dictionary<Direction, Vector3> DirectionVectors = new Dictionary<Direction, Vector3>()
+        public static readonly Dictionary<Direction, Vector3> DirectionVectors = new Dictionary<Direction, Vector3>()
         {
             { Direction.Forward , Vector3.forward},
             { Direction.Right , Vector3.right},
@@ -36,6 +35,7 @@ namespace Helpers
         BulletRifle,
         BulletRocketLauncher,
         Enemy,
+        Attachment,
     }
     
     [Serializable]
@@ -47,7 +47,7 @@ namespace Helpers
     [Serializable]
     public class WeaponData
     {
-        public List<UpgradeableAttribute> attributes;
+        public List<AttachmentAttribute> attributes;
         public float fireRate;
         public float areaOfEffect;
         public string weaponType;
@@ -62,7 +62,7 @@ namespace Helpers
     }
 
     [Serializable]
-    public class UpgradeableAttribute
+    public class AttachmentAttribute
     {
         public int type; 
         public float value;

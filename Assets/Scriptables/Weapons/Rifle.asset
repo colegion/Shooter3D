@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d310bc7c1c3348902d23037a52ced, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  upgradeableAttributes: []
-  fireRate: 1
-  areaOfEffect: 0
-  weaponMesh: {fileID: 0}
-  weaponMaterial: {fileID: 0}
+  upgradeableAttributes:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 0.5
+  - type: 2
+    value: 60
+  fireRate: 1.2
+  areaOfEffect: 1
+  weaponMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  weaponMaterial: {fileID: 2100000, guid: 6de2514a996ed1f4280773cb28e84d25, type: 2}
   weaponType: 1

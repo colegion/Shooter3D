@@ -1,75 +1,72 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using EnemySystem;
 using Helpers;
 using UnityEngine;
 
-using UnityEngine;
-using System.Collections.Generic;
-
-public class EnemySpawner : MonoBehaviour
+namespace EnemySystem
 {
-   [SerializeField] private GameObject ground;
-   private List<Enemy> _spawnedEnemies = new List<Enemy>();
-   private int _spawnCount = 5;
-
-
-   private void OnEnable()
+   public class EnemySpawner : MonoBehaviour
    {
-      AddListeners();
-   }
+      [SerializeField] private GameObject ground;
+      private List<Enemy> _spawnedEnemies = new List<Enemy>();
+      private int _spawnCount = 5;
 
-   private void OnDisable()
-   {
-      RemoveListeners();
-   }
 
-   private void Start()
-   {
-      SpawnEnemies(_spawnCount);
-   }
-
-   private void SpawnEnemies(int count)
-   {
-      for (int i = 0; i < count; i++)
+      private void OnEnable()
       {
-         var enemy = PoolController.Instance.GetItemFromPool(PoolableTypes.Enemy) as Enemy;
-         if (enemy != null)
+         AddListeners();
+      }
+
+      private void OnDisable()
+      {
+         RemoveListeners();
+      }
+
+      private void Start()
+      {
+         SpawnEnemies(_spawnCount);
+      }
+
+      private void SpawnEnemies(int count)
+      {
+         for (int i = 0; i < count; i++)
          {
-            Vector3 spawnPosition = GetRandomPointOnGround();
-            enemy.transform.position = spawnPosition;
-            enemy.gameObject.SetActive(true);
-            enemy.Initialize();
-            _spawnedEnemies.Add(enemy);
+            var enemy = PoolController.Instance.GetItemFromPool(PoolableTypes.Enemy) as Enemy;
+            if (enemy != null)
+            {
+               Vector3 spawnPosition = GetRandomPointOnGround();
+               enemy.transform.position = spawnPosition;
+               enemy.gameObject.SetActive(true);
+               enemy.Initialize();
+               _spawnedEnemies.Add(enemy);
+            }
          }
       }
-   }
 
-   private Vector3 GetRandomPointOnGround()
-   {
-      Bounds groundBounds = ground.GetComponent<Renderer>().bounds;
+      private Vector3 GetRandomPointOnGround()
+      {
+         Bounds groundBounds = ground.GetComponent<Renderer>().bounds;
       
-      float randomX = UnityEngine.Random.Range(groundBounds.min.x, groundBounds.max.x);
-      float randomZ = UnityEngine.Random.Range(groundBounds.min.z, groundBounds.max.z);
+         float randomX = UnityEngine.Random.Range(groundBounds.min.x, groundBounds.max.x);
+         float randomZ = UnityEngine.Random.Range(groundBounds.min.z, groundBounds.max.z);
       
-      float groundY = ground.transform.position.y;
+         float groundY = ground.transform.position.y;
 
-      return new Vector3(randomX, groundY, randomZ);
-   }
+         return new Vector3(randomX, groundY, randomZ);
+      }
 
-   private void HandleOnEnemyDie(OnEnemyDie e)
-   {
-      SpawnEnemies(1);
-   }
+      private void HandleOnEnemyDie(OnEnemyDie e)
+      {
+         SpawnEnemies(1);
+      }
 
-   private void AddListeners()
-   {
-      EventBus.Register<OnEnemyDie>(HandleOnEnemyDie);
-   }
+      private void AddListeners()
+      {
+         EventBus.Register<OnEnemyDie>(HandleOnEnemyDie);
+      }
 
-   private void RemoveListeners()
-   {
-      EventBus.Unregister<OnEnemyDie>(HandleOnEnemyDie);
+      private void RemoveListeners()
+      {
+         EventBus.Unregister<OnEnemyDie>(HandleOnEnemyDie);
+      }
    }
 }

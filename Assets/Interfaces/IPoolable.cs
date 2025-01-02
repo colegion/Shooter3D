@@ -5,7 +5,7 @@ namespace Interfaces
     public interface IPoolable
     {
         public void OnCreatedForPool();
-        public void OnReleasePool();
+        public void OnReleaseFromPool();
         public GameObject GameObject();
         
 

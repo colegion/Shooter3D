@@ -78,9 +78,7 @@ public class GameController : MonoBehaviour
             Debug.LogError("Failed to load WeaponConfigs.");
         }
     }
-
-
-
+    
     public IShootingStrategy GetStrategyByType(WeaponType type)
     {
         return _strategyPool.GetStrategyByType(type);
@@ -90,10 +88,8 @@ public class GameController : MonoBehaviour
     {
         foreach (var config in _weaponConfigs)
         {
-            Debug.Log("checking config type: " + config.weaponType);
             if (config.weaponType == type)
             {
-                Debug.Log("found type :" + type);
                 return config;
             }
         }

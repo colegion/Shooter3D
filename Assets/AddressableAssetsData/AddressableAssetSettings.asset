@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: d1cbe81af9a572743b9ff16a869e91a9
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: e17c45040ee8cb04e37f58e4db625e5a
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - WeaponConfigs
-    - Upgradeables
+    - Attachments
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0439f4df445ad284c891a78c18976b79, type: 2}

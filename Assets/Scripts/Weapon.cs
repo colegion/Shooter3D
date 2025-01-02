@@ -17,10 +17,10 @@ public class Weapon : MonoBehaviour
     private IShootingStrategy _shootingStrategy;
     private float _lastFireTime;
 
-    private readonly Dictionary<WeaponType, List<UpgradeableConfig>> _collectedAttachmentsByWeapon = 
+    private readonly Dictionary<WeaponType, List<AttachmentConfig>> _collectedAttachmentsByWeapon = 
         Enum.GetValues(typeof(WeaponType))
             .Cast<WeaponType>()
-            .ToDictionary(weaponType => weaponType, _ => new List<UpgradeableConfig>());
+            .ToDictionary(weaponType => weaponType, _ => new List<AttachmentConfig>());
 
     public void Initialize(WeaponConfig config)
     {
@@ -44,11 +44,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void ApplyAttachment(UpgradeableConfig attachmentData)
+    public void ApplyAttachment(AttachmentConfig attachmentData)
     {
         if (!_collectedAttachmentsByWeapon.TryGetValue(_config.weaponType, out var attachments))
         {
-            attachments = new List<UpgradeableConfig>();
+            attachments = new List<AttachmentConfig>();
             _collectedAttachmentsByWeapon[_config.weaponType] = attachments;
         }
 
@@ -63,7 +63,7 @@ public class Weapon : MonoBehaviour
         return Time.time >= _lastFireTime + (1f / _config.fireRate);
     }
 
-    public bool IsAttachmentExists(UpgradeableConfig attachmentData)
+    public bool IsAttachmentExists(AttachmentConfig attachmentData)
     {
         if (_collectedAttachmentsByWeapon.TryGetValue(_config.weaponType, out var attachments))
         {
@@ -76,6 +76,6 @@ public class Weapon : MonoBehaviour
 
     public float GetRange()
     {
-        return _config.Range;
+        return _config == null ? 0f : _config.Range;
     }
 }

@@ -27,7 +27,7 @@ namespace Helpers
             foreach (PoolableTypes type in Enum.GetValues(typeof(PoolableTypes)))
             {
                 var prefabPath = Utilities.PrefabPath + type;
-                var prefab = Resources.Load<GameObject>(prefabPath); // Load as GameObject
+                var prefab = Resources.Load<GameObject>(prefabPath);
                 if (prefab == null)
                 {
                     Debug.LogError($"Prefab not found at path: {prefabPath}");
@@ -91,7 +91,7 @@ namespace Helpers
                     var pooleable = result.GetComponent<IPoolable>();
                     if (pooleable != null)
                     {
-                        pooleable.OnReleasePool();
+                        pooleable.OnReleaseFromPool();
                         return pooleable;
                     }
                     Debug.LogError("Dequeued object does not implement IPoolable.");
@@ -103,7 +103,7 @@ namespace Helpers
                     var pooleable = instantiatedObject.GetComponent<IPoolable>();
                     if (pooleable != null)
                     {
-                        pooleable.OnReleasePool();
+                        pooleable.OnReleaseFromPool();
                         return pooleable;
                     }
                     Debug.LogError("Instantiated object does not implement IPoolable.");

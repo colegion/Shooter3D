@@ -71,12 +71,12 @@ public class Player : BaseDamageable
         weapon.FireBullet(GetTargetDirection());
     }
 
-    public bool IsAlreadyAttachedToCurrentWeapon(UpgradeableConfig config)
+    public bool IsAlreadyAttachedToCurrentWeapon(AttachmentConfig config)
     {
         return weapon.IsAttachmentExists(config);
     }
 
-    public void ApplyUpgradeable(UpgradeableConfig config)
+    public void ApplyUpgradeable(AttachmentConfig config)
     {
         weapon.ApplyAttachment(config);
     }

@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour, IPoolable
         bulletCollider.enabled = false;
     }
 
-    public void OnReleasePool()
+    public void OnReleaseFromPool()
     {
         visuals.gameObject.SetActive(true);
         bulletCollider.enabled = true;

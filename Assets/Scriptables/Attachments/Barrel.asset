@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db8403d4fe3c85446a5f98c6f01aac93, type: 3}
-  m_Name: Scope
+  m_Name: Barrel
   m_EditorClassIdentifier: 
   data:
-    type: 0
-    value: 5
+    type: 2
+    value: 15
+  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: fb63041ee6efbee4f840e42ee439665f, type: 2}

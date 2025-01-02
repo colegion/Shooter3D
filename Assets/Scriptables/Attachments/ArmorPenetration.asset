@@ -15,3 +15,5 @@ MonoBehaviour:
   data:
     type: 1
     value: 10
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 53205855114cfbb4f8df0f0de3cc785b, type: 2}

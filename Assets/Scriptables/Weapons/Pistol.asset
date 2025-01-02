@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d310bc7c1c3348902d23037a52ced, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  upgradeableAttributes: []
-  fireRate: 5
-  areaOfEffect: 0
-  weaponMesh: {fileID: 0}
-  weaponMaterial: {fileID: 0}
+  upgradeableAttributes:
+  - type: 0
+    value: 50
+  - type: 1
+    value: 0.2
+  - type: 2
+    value: 50
+  fireRate: 1.5
+  areaOfEffect: 1
+  weaponMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  weaponMaterial: {fileID: 2100000, guid: c4aa2ac44491afa40914b666a87d582e, type: 2}
   weaponType: 0

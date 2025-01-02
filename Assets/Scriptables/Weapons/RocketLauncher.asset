@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d310bc7c1c3348902d23037a52ced, type: 3}
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
-  upgradeableAttributes: []
-  fireRate: 0.5
-  areaOfEffect: 0
-  weaponMesh: {fileID: 0}
-  weaponMaterial: {fileID: 0}
+  upgradeableAttributes:
+  - type: 0
+    value: 200
+  - type: 1
+    value: 0.8
+  - type: 2
+    value: 100
+  fireRate: 0.8
+  areaOfEffect: 5
+  weaponMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  weaponMaterial: {fileID: 2100000, guid: 94aa13703df4b1946b9d7f2a8f319e05, type: 2}
   weaponType: 2

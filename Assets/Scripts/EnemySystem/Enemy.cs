@@ -69,7 +69,7 @@ namespace EnemySystem
             visuals.gameObject.SetActive(false);
         }
         
-        public void OnReleasePool()
+        public void OnReleaseFromPool()
         {
             enemyCollider.enabled = true;
             visuals.gameObject.SetActive(true);

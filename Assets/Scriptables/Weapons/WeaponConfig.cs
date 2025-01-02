@@ -11,7 +11,7 @@ namespace Scriptables.Weapons
     [CreateAssetMenu(fileName = "New Weapon Config", menuName = "ScriptableObjects/Weapon Config")]
     public class WeaponConfig : ScriptableObject
     {
-        public List<UpgradeableAttribute> upgradeableAttributes;
+        public List<AttachmentAttribute> upgradeableAttributes;
         public float fireRate;
         public float areaOfEffect;
         public Mesh weaponMesh;
@@ -25,7 +25,7 @@ namespace Scriptables.Weapons
         public void Initialize(WeaponData data)
         {
             // Initialize upgradeable attributes with their integer types
-            upgradeableAttributes = data.attributes.Select(attr => new UpgradeableAttribute
+            upgradeableAttributes = data.attributes.Select(attr => new AttachmentAttribute
             {
                 type = attr.type,  // Store the int value of the type
                 value = attr.value
@@ -39,7 +39,7 @@ namespace Scriptables.Weapons
                 weaponType = weaponTypeEnum;
         }
 
-        public void ApplyEffect(UpgradeableConfig attribute)
+        public void ApplyEffect(AttachmentConfig attribute)
         {
             var field = upgradeableAttributes.Find(x => x.type == attribute.data.type);
             if (field != null)
