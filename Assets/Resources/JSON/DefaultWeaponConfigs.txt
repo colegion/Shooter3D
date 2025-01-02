@@ -9,11 +9,11 @@
         },
         {
           "type": 1,  
-          "value": 10
+          "value": 0.2
         },
         {
           "type": 2,  
-          "value": 20
+          "value": 50
         }
       ],
       "fireRate": 1.5,
@@ -28,11 +28,11 @@
         },
         {
           "type": 1,  
-          "value": 20
+          "value": 0.5
         },
         {
           "type": 2, 
-          "value": 50
+          "value": 60
         }
       ],
       "fireRate": 1.2,
@@ -47,7 +47,7 @@
         },
         {
           "type": 1,
-          "value": 50
+          "value": 0.8
         },
         {
           "type": 2,

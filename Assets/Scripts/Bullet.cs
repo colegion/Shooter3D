@@ -16,11 +16,11 @@ public class Bullet : MonoBehaviour, IPoolable
     [SerializeField] private GameObject visuals;
     [SerializeField] private MeshFilter bulletMesh;
     [SerializeField] private MeshRenderer bulletRenderer;
-    private WeaponConfig _weaponConfig;
+    protected WeaponConfig WeaponConfig;
 
     public void Initialize(WeaponConfig parentWeaponConfig)
     {
-        _weaponConfig = parentWeaponConfig;
+        WeaponConfig = parentWeaponConfig;
     }
 
     public void MoveTowardsTarget(Vector3 target)
@@ -39,23 +39,24 @@ public class Bullet : MonoBehaviour, IPoolable
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
             Debug.Log($"Hit: {other.gameObject.name}" , other.gameObject);
-            enemy.TakeDamage(_weaponConfig.Damage, _weaponConfig.ArmorPenetration);
+            enemy.TakeDamage(WeaponConfig.Damage, WeaponConfig.ArmorPenetration);
             Explode();
         }
     }
 
     protected virtual void Explode()
     {
+        transform.DOKill(); 
         ResetSelf();
     }
 
-    private void ResetSelf()
+    protected void ResetSelf()
     {
         bulletCollider.enabled = false;
         bulletRenderer.material = null;
         bulletMesh.mesh = null;
         visuals.gameObject.SetActive(false);
-        PoolController.Instance.EnqueueItemToPool(Utilities.BulletTypesByWeapons[_weaponConfig.weaponType], this);
+        PoolController.Instance.EnqueueItemToPool(Utilities.BulletTypesByWeapons[WeaponConfig.weaponType], this);
     }
 
     public void OnCreatedForPool()
