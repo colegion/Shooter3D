@@ -30,16 +30,6 @@ public class Player : BaseDamageable
         get => _armor;
         set => _armor = value;
     }
-    
-    private void OnEnable()
-    {
-        AddListeners();
-    }
-
-    private void OnDisable()
-    {
-        RemoveListeners();
-    }
 
     public void Initialize()
     {
@@ -106,16 +96,6 @@ public class Player : BaseDamageable
         _armor = Utilities.BaseArmor;
         weapon.ClearAttachments();
         OnWeaponChanged(WeaponType.Pistol);
-        
-    }
-
-    private void AddListeners()
-    {
-        
-    }
-
-    private void RemoveListeners()
-    {
         
     }
 }
