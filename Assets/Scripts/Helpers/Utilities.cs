@@ -98,6 +98,12 @@ namespace Helpers
         Left,
     }
 
+    public enum BarType
+    {
+        Health, 
+        Armor
+    }
+
     public class OnDirectionChanged
     {
         public Direction Direction;
@@ -105,6 +111,18 @@ namespace Helpers
         public OnDirectionChanged(Direction direction)
         {
             Direction = direction;
+        }
+    }
+
+    public class OnDamageTaken
+    {
+        public float HealthPercentage;
+        public float ArmorPercentage;
+
+        public OnDamageTaken(float health, float armor)
+        {
+            HealthPercentage = health;
+            ArmorPercentage = armor;
         }
     }
 

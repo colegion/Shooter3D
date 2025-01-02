@@ -1,7 +1,11 @@
+using System.Collections.Generic;
+using Helpers;
+using UI;
 using UnityEngine;
 
 public abstract class BaseDamageable : MonoBehaviour
 {
+    [SerializeField] private List<BarHelper> bars;
     protected abstract float Health { get; set; }
     protected abstract float Armor { get; set; }
     
@@ -21,6 +25,8 @@ public abstract class BaseDamageable : MonoBehaviour
             {
                 Armor -= damageToArmor;
             }
+            
+            bars[(int)BarType.Armor].UpdateSelf(Armor);
         }
         
         Health -= damageToHealth;
@@ -30,6 +36,8 @@ public abstract class BaseDamageable : MonoBehaviour
             Health = 0;
             Die();
         }
+        
+        bars[(int)BarType.Health].UpdateSelf(Health);
     }
 
     public abstract void Die();

@@ -36,7 +36,6 @@ public class ExplodeableBullet : Bullet
         ResetSelf();
     }
 
-
     private void OnCollisionEnter(Collision other)
     {
         Explode();
