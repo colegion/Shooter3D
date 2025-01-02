@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Helpers;
-using UI;
 using UnityEngine;
 
 public abstract class BaseDamageable : MonoBehaviour
