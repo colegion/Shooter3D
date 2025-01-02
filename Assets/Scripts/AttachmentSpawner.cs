@@ -59,12 +59,19 @@ public class AttachmentSpawner : MonoBehaviour
         var index = Random.Range(0, attachmentConfigs.Count);
         return attachmentConfigs[index];
     }
+
+    private void HandleOnAttachmentLooted(OnAttachmentLooted e)
+    {
+        SpawnAttachments(1);
+    }
     
     private void AddListeners()
     {
+        EventBus.Register<OnAttachmentLooted>(HandleOnAttachmentLooted);
     }
 
     private void RemoveListeners()
     {
+        EventBus.Unregister<OnAttachmentLooted>(HandleOnAttachmentLooted);
     }
 }

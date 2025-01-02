@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Helpers;
 using Interfaces;
 using Scriptables.Upgradeables;
 using UnityEngine;
@@ -37,6 +38,8 @@ public class Attachment : MonoBehaviour, IPoolable
         attachmentCollider.enabled = false;
         _config = null;
         visuals.gameObject.SetActive(false);
+        PoolController.Instance.EnqueueItemToPool(PoolableTypes.Attachment, this);
+        EventBus.Trigger(new OnAttachmentLooted());
     }
 
     public void OnCreatedForPool()

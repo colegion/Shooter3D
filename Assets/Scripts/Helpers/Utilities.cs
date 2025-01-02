@@ -114,6 +114,11 @@ namespace Helpers
         }
     }
 
+    public class OnAttachmentLooted
+    {
+        
+    }
+
     public class OnDamageTaken
     {
         public float HealthPercentage;
