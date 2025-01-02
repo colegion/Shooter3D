@@ -120,6 +120,9 @@ namespace Helpers
 
         public void EnqueueItemToPool(PoolableTypes poolName, IPoolable item)
         {
+            var itemObj = item.GameObject();
+            itemObj.transform.SetParent(transform);
+            itemObj.transform.localPosition = Vector3.zero;
             if (_pools.ContainsKey(poolName))
             {
                 _pools[poolName].Enqueue(item as Object);

@@ -57,7 +57,6 @@ public class Weapon : MonoBehaviour
         _config.ApplyEffect(attachmentData);
         attachments.Add(attachmentData);
     }
-
     
     private bool CanFire()
     {

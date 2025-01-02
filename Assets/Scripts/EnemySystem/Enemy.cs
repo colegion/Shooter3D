@@ -47,6 +47,7 @@ namespace EnemySystem
         
         public override void Die()
         {
+            enemyCollider.enabled = false;
             visuals.gameObject.SetActive(false);
             _patrolState = null;
             _attackState = null;
@@ -65,7 +66,6 @@ namespace EnemySystem
 
         public void OnCreatedForPool()
         {
-            enemyCollider.enabled = false;
             visuals.gameObject.SetActive(false);
         }
         
