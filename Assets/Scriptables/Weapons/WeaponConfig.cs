@@ -24,17 +24,15 @@ namespace Scriptables.Weapons
 
         public void Initialize(WeaponData data)
         {
-            // Initialize upgradeable attributes with their integer types
             upgradeableAttributes = data.attributes.Select(attr => new AttachmentAttribute
             {
-                type = attr.type,  // Store the int value of the type
+                type = attr.type,
                 value = attr.value
             }).ToList();
         
             fireRate = data.fireRate;
             areaOfEffect = data.areaOfEffect;
-        
-            // Parse the weapon type string into an enum
+            
             if (Enum.TryParse(data.weaponType, out WeaponType weaponTypeEnum))
                 weaponType = weaponTypeEnum;
         }

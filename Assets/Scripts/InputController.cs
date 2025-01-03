@@ -49,22 +49,32 @@ public class InputController : MonoBehaviour
             player.Shoot();
         }
 
-        for (int i = 0; i < Enum.GetValues(typeof(WeaponType)).Length; i++)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
-            {
-                player.OnWeaponChanged((WeaponType)i);
-            }
+            player.OnWeaponChanged(WeaponType.Pistol);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            player.OnWeaponChanged(WeaponType.Rifle);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            player.OnWeaponChanged(WeaponType.RocketLauncher);
         }
     }
 
     private void GetMousePosition()
     {
         Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        int layerMask = LayerMask.GetMask("Ground"); 
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
         {
             Vector3 targetPosition = hit.point;
+            
+            targetPosition.y = transform.position.y;
             player.UpdateRotation(targetPosition);
         }
     }
@@ -72,5 +82,7 @@ public class InputController : MonoBehaviour
     private void TriggerDirectionUpdate()
     {
         player.MoveToDirection(_currentDirection);
+        GetMousePosition();
     }
+
 }

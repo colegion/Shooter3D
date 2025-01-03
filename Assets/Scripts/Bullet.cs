@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using DG.Tweening;
 using EnemySystem;
 using Helpers;
@@ -9,6 +10,8 @@ using Scriptables.Bullets;
 using Scriptables.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class Bullet : MonoBehaviour, IPoolable
 {
@@ -26,11 +29,6 @@ public class Bullet : MonoBehaviour, IPoolable
     public void MoveTowardsTarget(Vector3 target)
     {
         visuals.gameObject.SetActive(true);
-        Vector3 directionToTarget = (target - transform.position).normalized;
-        if (directionToTarget != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(directionToTarget);
-        }
         transform.DOMove(target, 2f).OnComplete(ResetSelf);
     }
 

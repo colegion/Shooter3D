@@ -35,5 +35,10 @@ namespace Helpers
 
             slider.transform.localScale = new Vector3(newHorizontalScale, _initialScale.y, _initialScale.z);
         }
+
+        public void ResetScale()
+        {
+            slider.transform.localScale = _initialScale;
+        }
     }
 }

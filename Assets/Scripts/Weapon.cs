@@ -87,4 +87,9 @@ public class Weapon : MonoBehaviour
     {
         return _config == null ? 0f : _config.Range;
     }
+
+    public float GetFireRate()
+    {
+        return _config == null ? 0f : _config.fireRate;
+    }
 }

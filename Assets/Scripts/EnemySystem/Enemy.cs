@@ -74,7 +74,7 @@ namespace EnemySystem
         private Vector3 GetTargetDirection()
         {
             Vector3 enemyForward = transform.forward;
-            return enemyForward * weapon.GetRange();
+            return transform.position + enemyForward * weapon.GetRange();
         }
 
         public void UpdateRotation(Vector3 target)

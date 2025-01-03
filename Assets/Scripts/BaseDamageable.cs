@@ -13,7 +13,7 @@ public abstract class BaseDamageable : MonoBehaviour
         float damageToHealth = damage * armorPenetration;
         float damageToArmor = damage - damageToHealth;
         
-        if (Armor > 0)
+        if (Armor >= 0)
         {
             if (damageToArmor > Armor)
             {
@@ -43,7 +43,7 @@ public abstract class BaseDamageable : MonoBehaviour
     {
         foreach (var bar in bars)
         {
-        //    bar.ResetScale();
+            bar.ResetScale();
         }
     }
 
