@@ -104,6 +104,12 @@ namespace Helpers
         Armor
     }
 
+    public enum StateType
+    {
+        Patrol,
+        Attack
+    }
+
     public class OnDirectionChanged
     {
         public Direction Direction;
@@ -119,16 +125,9 @@ namespace Helpers
         
     }
 
-    public class OnDamageTaken
+    public class OnGameReadyToStart
     {
-        public float HealthPercentage;
-        public float ArmorPercentage;
-
-        public OnDamageTaken(float health, float armor)
-        {
-            HealthPercentage = health;
-            ArmorPercentage = armor;
-        }
+        
     }
 
     public class OnEnemyDie

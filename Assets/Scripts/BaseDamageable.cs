@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseDamageable : MonoBehaviour
 {
-    [SerializeField] private List<BarHelper> bars;
+    [SerializeField] protected List<BarHelper> bars;
     protected abstract float Health { get; set; }
     protected abstract float Armor { get; set; }
     
@@ -37,6 +37,14 @@ public abstract class BaseDamageable : MonoBehaviour
         }
         
         bars[(int)BarType.Health].UpdateSelf(Health);
+    }
+
+    public void ResetBars()
+    {
+        foreach (var bar in bars)
+        {
+        //    bar.ResetScale();
+        }
     }
 
     public abstract void Die();

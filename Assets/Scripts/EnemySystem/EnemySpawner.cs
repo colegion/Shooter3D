@@ -21,11 +21,6 @@ namespace EnemySystem
          RemoveListeners();
       }
 
-      private void Start()
-      {
-         SpawnEnemies(_spawnCount);
-      }
-
       private void SpawnEnemies(int count)
       {
          for (int i = 0; i < count; i++)
@@ -59,14 +54,21 @@ namespace EnemySystem
          SpawnEnemies(1);
       }
 
+      private void HandleOnGameReady(OnGameReadyToStart e)
+      {
+         SpawnEnemies(_spawnCount);
+      }
+
       private void AddListeners()
       {
          EventBus.Register<OnEnemyDie>(HandleOnEnemyDie);
+         EventBus.Register<OnGameReadyToStart>(HandleOnGameReady);
       }
 
       private void RemoveListeners()
       {
          EventBus.Unregister<OnEnemyDie>(HandleOnEnemyDie);
+         EventBus.Unregister<OnGameReadyToStart>(HandleOnGameReady);
       }
    }
 }

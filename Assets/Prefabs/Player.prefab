@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 3977501453570183323}
   - {fileID: 7004832961208995787}
   visuals: {fileID: 4100199054520062906}
-  moveSpeed: 5
+  moveSpeed: 12
   weapon: {fileID: 4062220466534799150}
 --- !u!54 &3244207693847044688
 Rigidbody:

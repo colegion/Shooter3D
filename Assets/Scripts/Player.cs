@@ -46,18 +46,21 @@ public class Player : BaseDamageable
     public void UpdateRotation(Vector3 target)
     {
         var position = transform.position;
-        target.y = position.y;
+        target.y = position.y; // Ensure y-axis alignment
         Vector3 direction = target - position;
-        direction.y = 0;
-        if (direction.sqrMagnitude > 0.01f)
+        direction.y = 0; // Prevent vertical rotation
+
+        if (direction.sqrMagnitude > 0.01f) // Avoid very small rotations
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
     }
 
+
     public void Shoot()
     {
+        if (weapon == null) return;
         weapon.FireBullet(GetTargetDirection());
     }
 
@@ -73,10 +76,28 @@ public class Player : BaseDamageable
     
     private Vector3 GetTargetDirection()
     {
-        Vector3 playerForward = transform.forward;
-        return playerForward * weapon.GetRange();
-    }
+        // Raycast from mouse position to determine where the target is
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+        // Check if we hit something on the ground (or another valid layer)
+        int layerMask = LayerMask.GetMask("Ground");
+    
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
+        {
+            Vector3 targetPosition = hit.point;
+            targetPosition.y = transform.position.y; // Keep it level with the player
+
+            // Calculate direction from player to the target position
+            Vector3 direction = (targetPosition - transform.position).normalized;
+
+            // Return direction scaled by the weapon range
+            return direction * weapon.GetRange();
+        }
+
+        // If no hit, return the default forward direction
+        return transform.forward * weapon.GetRange();
+    }
+    
     public void OnWeaponChanged(WeaponType type)
     {
         _currentWeaponConfig = GameController.Instance.GetWeaponConfigByType(type);
@@ -86,6 +107,7 @@ public class Player : BaseDamageable
     public override void Die()
     {
         visuals.SetActive(false);
+        //ResetBars();
         EventBus.Trigger(new OnGameOver());
     }
 

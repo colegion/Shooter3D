@@ -31,15 +31,15 @@ public class Bullet : MonoBehaviour, IPoolable
         {
             transform.rotation = Quaternion.LookRotation(directionToTarget);
         }
-        transform.DOMove(target, 3.5f).OnComplete(ResetSelf);
+        transform.DOMove(target, 2f).OnComplete(ResetSelf);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.TryGetComponent(out Enemy enemy))
+        if (other.gameObject.TryGetComponent(out BaseDamageable damageable))
         {
             Debug.Log($"Hit: {other.gameObject.name}" , other.gameObject);
-            enemy.TakeDamage(WeaponConfig.Damage, WeaponConfig.ArmorPenetration);
+            damageable.TakeDamage(WeaponConfig.Damage, WeaponConfig.ArmorPenetration);
             Explode();
         }
     }

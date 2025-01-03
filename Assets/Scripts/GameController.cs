@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Helpers;
 using Interfaces.WeaponStrategy;
 using Scriptables.Weapons;
@@ -25,12 +26,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private async void Awake()
     {
         _instance = this;
         _strategyPool = new StrategyPool();
         _strategyPool.PoolStrategies();
-        LoadWeaponConfigs();
+        await LoadWeaponConfigsAsync();
+        player.Initialize(); 
+        EventBus.Trigger(new OnGameReadyToStart());
     }
 
     private void OnEnable()
@@ -43,9 +46,51 @@ public class GameController : MonoBehaviour
         RemoveListeners();
     }
 
-    private void LoadWeaponConfigs()
+    private async Task LoadWeaponConfigsAsync()
     {
-        Addressables.LoadAssetsAsync<WeaponConfig>(Utilities.WeaponConfigLabel, null).Completed += OnWeaponConfigsLoaded;
+        var handle = Addressables.LoadAssetsAsync<WeaponConfig>(Utilities.WeaponConfigLabel, null);
+        await handle.Task;
+
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            _weaponConfigs = new List<WeaponConfig>(handle.Result);
+            InitializeWeaponConfigs();
+        }
+        else
+        {
+            Debug.LogError("Failed to load WeaponConfigs.");
+        }
+    }
+    
+    private void InitializeWeaponConfigs()
+    {
+        string jsonPath = "JSON/DefaultWeaponConfigs";
+        TextAsset jsonFile = Resources.Load<TextAsset>(jsonPath);
+
+        if (jsonFile != null)
+        {
+            WeaponConfigsJson weaponConfigsJson = JsonUtility.FromJson<WeaponConfigsJson>(jsonFile.text);
+
+            foreach (var weaponData in weaponConfigsJson.configs)
+            {
+                weaponData.InitializeAttributes();
+                WeaponConfig weaponConfig = _weaponConfigs.Find(config => config.weaponType.ToString() == weaponData.weaponType);
+
+                if (weaponConfig != null)
+                {
+                    weaponConfig.Initialize(weaponData);
+                    Debug.Log($"Initialized WeaponConfig: {weaponConfig.name}, Damage: {weaponConfig.Damage}");
+                }
+                else
+                {
+                    Debug.LogWarning($"WeaponConfig for {weaponData.weaponType} not found.");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to load WeaponConfigs JSON.");
+        }
     }
     
     private void OnWeaponConfigsLoaded(AsyncOperationHandle<IList<WeaponConfig>> handle)

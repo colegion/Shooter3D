@@ -60,6 +60,7 @@ public class Weapon : MonoBehaviour
     
     private bool CanFire()
     {
+        if (_config == null) return false;
         return Time.time >= _lastFireTime + (1f / _config.fireRate);
     }
 
